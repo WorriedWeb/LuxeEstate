@@ -21,18 +21,30 @@ const app = express();
 const PORT = process.env.PORT;
 
 // Middleware
-app.use(cors({
-  origin: process.env.CLIENT_URL || '*',
-  credentials: true
-}));
+const allowedOrigins = [
+  'http://localhost:3000',
+  'https://luxe-estate-frontend.vercel.app',
+];
+
+app.use(
+  cors({
+    origin: (origin, callback) => {
+      if (!origin) return callback(null, true);
+
+      if (allowedOrigins.includes(origin)) {
+        return callback(null, true);
+      }
+
+      return callback(null, false);
+    },
+    credentials: true,
+  })
+);
+
+app.options('*', cors());
 
 app.use(bodyParser.json({ limit: '10mb' }));
 // app.use(requestLogger);
-app.use((req, res, next) => {
-  console.log(`[SERVER HIT] ${req.method} ${req.originalUrl}`);
-  next();
-});
-
 
 
 // Routes
