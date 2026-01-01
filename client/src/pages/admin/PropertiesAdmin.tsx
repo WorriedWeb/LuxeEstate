@@ -130,7 +130,6 @@ export const PropertiesAdmin: React.FC = () => {
         : { ignoreStatus: true };
     const data = await mockService.getProperties(filters);
     setProperties(data);
-    console.log("Loaded properties:", data);
   };
 
   const loadAgents = async () => {
@@ -156,7 +155,6 @@ export const PropertiesAdmin: React.FC = () => {
   };
 
   const handleDelete = async (id: string) => {
-    console.log("DELETE ID:", id);
     if (confirm('Are you sure you want to delete this property? This action cannot be undone.')) {
         try {
             await mockService.deleteProperty(id);

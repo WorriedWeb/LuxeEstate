@@ -30,7 +30,6 @@ export const PropertyDetails: React.FC = () => {
     setLoading(true);
     mockService.getPropertyBySlug(slug)
         .then(data => {
-            console.log('Fetched property data:', data);
         setProperty(data || null);
         setLoading(false);
         })
@@ -50,7 +49,6 @@ export const PropertyDetails: React.FC = () => {
 
         mockService.getAgentById(property.agentId)
             .then(data => {
-                console.log('Fetched agent data:', data);
             setAgent(data.agent); // ONLY agent, not properties/leads
             })
             .catch(err => {

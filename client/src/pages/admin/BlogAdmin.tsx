@@ -37,7 +37,6 @@ export const BlogAdmin: React.FC = () => {
   const loadPosts = async () => {
     // Admins see all posts; Agents see their own (or all if you prefer collaboration)
     const data = await mockService.getBlogPosts();
-    console.log(data.map(p => p.id));
     setPosts(data);
 
     if (user?.role === UserRole.ADMIN) {
