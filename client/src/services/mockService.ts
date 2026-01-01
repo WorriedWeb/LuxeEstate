@@ -3,7 +3,7 @@ import { normalizeMongoArray, normalizeMongoObject } from '../utils/normalize';
 // Backend API URL
 // For local development: http://localhost:5000/api
 // For production: configured via environment variables
-const API_URL = import.meta.env.REACT_APP_API_URL || 'http://localhost:5000/api';
+const API_URL = `${import.meta.env.VITE_REACT_APP_API_URL}/api` || 'http://localhost:5000/api';
 
 class MockService {
   constructor() {
